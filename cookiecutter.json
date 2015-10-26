@@ -1,0 +1,19 @@
+{
+    "author_name": "Michael Goerz",
+    "author_email": "goerz@stanford.edu",
+    "author_affiliation": "Stanford University",
+    "location": "Seminar",
+    "year": "2015",
+    "month": "01",
+    "day": "01",
+    "date": "January {{cookiecutter.day}}, {{cookiecutter.year}}",
+    "prefix": "slides",
+    "title": "Title",
+    "short_title": "{{cookiecutter.title}}",
+    "_copy_without_render": [
+        "theme_settings.tex",
+        "*.sty",
+        "images/*"
+    ],
+    "repo_name": "{{cookiecutter.year}}-{{cookiecutter.month}}-{{cookiecutter.day}}_{{cookiecutter.prefix}}"
+}

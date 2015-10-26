@@ -1,0 +1,130 @@
+\ProvidesPackage{mymacros}[2015/10/26
+My Macros (c) 2015 Michael Goerz
+http://michaelgoerz.net/]
+
+% *******************************************************************
+% My Macros (c) 2015 Michael Goerz
+%
+% This package contains macros for my personal use.
+%
+%  This file may be distributed and/or modified under the conditions of
+%  the LaTeX Project Public License, either version 1.2 of this license
+%  or (at your option) any later version.  The latest version of this
+%  license is in:
+%
+%     http://www.latex-project.org/lppl.txt
+%
+% *******************************************************************
+
+
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{amssymb, amsmath, amsfonts, amsthm}
+\RequirePackage{accents} % only for \doublehat
+\RequirePackage{bbm}     % only for \unity
+\RequirePackage{ifthen}
+\RequirePackage{graphicx, epsfig}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows,backgrounds,snakes,shapes}
+\usetikzlibrary{shapes.arrows}
+
+
+% *******************************************************************
+
+
+% Simple macros and operator names
+\newcommand{\vectt}[2]{\ensuremath{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}}
+\newcommand{\vecttt}[3]{\ensuremath{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}}
+\newcommand{\vectttt}[4]{\ensuremath{\begin{pmatrix} #1 \\ #2 \\ #3 \\ #4 \end{pmatrix}}}
+\newcommand{\inftyint}{\ensuremath{\int\limits_{-\infty}^{+\infty}}}
+\newcommand{\inftysum}[2][0]{\sum\limits_{#2=#1}^{\infty}}
+\newcommand{\DynMap}{\mathcal{E}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\aux}{\operatorname{aux}}
+\newcommand{\rot}{\operatorname{rot}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\abs}{\operatorname{abs}}
+\newcommand{\opt}{\operatorname{opt}}
+\newcommand{\eff}{\operatorname{eff}}
+\newcommand{\tgt}{\operatorname{tgt}}
+\newcommand{\init}{\operatorname{in}}
+\newcommand{\pop}{\operatorname{pop}}
+\newcommand{\old}{\operatorname{old}}
+\newcommand{\hol}{\operatorname{hol}}
+\newcommand{\sm}{\operatorname{sm}}
+\newcommand{\new}{\operatorname{new}}
+\newcommand{\avg}{\operatorname{avg}}
+\newcommand{\simplex}{\operatorname{splx}}
+\newcommand{\PE}{\operatorname{PE}}
+\newcommand{\SQ}{\operatorname{SQ}}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\sets}[1]{\mathbb{#1}} % Complex, Real, etc.
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Integer}{\mathbb{N}}
+\newcommand{\daggered}{^\dagger}
+\newcommand{\transposed}{^\text{T}}
+\newcommand{\identity}{\mathbbm{1}}
+\newcommand{\dd}{\, \textnormal{d}} % \dd x -> dx in integrals
+\newcommand{\ii}{\textnormal{i}} % imaginary i
+\newcommand{\ee}{\textnormal{e}} % Euler's number
+\newcommand{\deriv}[2][{}]{\frac{\textnormal{d} #1}{\textnormal{d}#2}}
+\newcommand{\pderiv}[2][{}]{\frac{\partial #1}{\partial #2}}
+\newcommand{\Nabla}[1]{\nabla_{\kern-3pt #1}}
+\newcommand{\difquo}[2][{}]{\frac{\textnormal{d} #1}{\textnormal{d}#2}}
+\newcommand{\partdifquo}[2][{}]{\frac{\partial #1}{\partial #2}}
+\renewcommand{\qed}{\begin{flushright}$\blacksquare$\end{flushright}}
+\newcommand{\laplace}{\Delta}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+\newcommand{\SigmaX}{\Op{\sigma}_x}
+\newcommand{\SigmaY}{\Op{\sigma}_y}
+\newcommand{\SigmaZ}{\Op{\sigma}_z}
+\newcommand{\SigmaPlus}{\Op{\sigma}_{\!+}}
+\newcommand{\SigmaMinus}{\Op{\sigma}_{\!-}}
+% double hats
+\newlength{\dhatheight}
+\newcommand{\hhatDS}[1]{%
+    \settoheight{\dhatheight}{\ensuremath{\hat{#1}}}%
+    \addtolength{\dhatheight}{-0.35ex}%
+    \hat{\vphantom{\rule{1pt}{\dhatheight}}%
+    \smash{\hat{#1}}}}
+\newcommand{\hhatTS}[1]{%
+    \settoheight{\dhatheight}{\ensuremath{\hat{#1}}}%
+    \addtolength{\dhatheight}{-0.35ex}%
+    \hat{\vphantom{\rule{1pt}{\dhatheight}}%
+    \smash{\hat{#1}}}}
+\newcommand{\hhatS}[1]{%
+    \settoheight{\dhatheight}{\ensuremath{\scriptstyle{\hat{#1}}}}%
+    \addtolength{\dhatheight}{-0.175ex}%
+    \hat{\vphantom{\rule{1pt}{\dhatheight}}%
+    \smash{\hat{#1}}}}
+\newcommand{\hhatSS}[1]{%
+    \settoheight{\dhatheight}{\ensuremath{\scriptscriptstyle{\hat{#1}}}}%
+    \addtolength{\dhatheight}{-0.07ex}%
+    \hat{\vphantom{\rule{1pt}{\dhatheight}}%
+    \smash{\hat{#1}}}}
+\newcommand{\doublehat}[1]{\mathchoice{\hhatDS{#1}}{\hhatTS{#1}}{\hhatS{#1}}{\hhatSS{#1}}}
+
+% Brakets and other QM stuff (Adapted from braket.sty)
+% Both Liouville space and Hilbert Space
+\newcommand{\Liouville}{\mathcal{L}}
+\newcommand{\Dissipator}{\mathcal{D}}
+\newcommand{\Hilbert}{\mathcal{H}}
+\newcommand{\Timeorder}{\mathcal{T}}
+\newcommand{\Lie}{\mathfrak{L}}
+\newcommand{\LOp}[1]{\boldsymbol{\doublehat{#1}}}
+\newcommand{\Liouvillian}{\LOp{\Liouville}}
+\newcommand{\Norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Abs}[1]{\left|#1\right|}
+\newcommand{\AbsSq}[1]{\left|#1\right|^2}
+\newcommand{\Avg}[1]{\left<#1\right>}
+\renewcommand{\bra}[1]{\ensuremath{\langle #1 \vert}}  % for normal text
+\renewcommand{\ket}[1]{\ensuremath{\vert #1 \rangle}}  % for normal text
+\newcommand{\KetBra}[2]{\Ket{#1}\kern-0.1em\Bra{#2}}
+\newcommand{\Op}[1]{\ensuremath{\boldsymbol{\mathsf{\hat{#1}}}}}
+
+\ProcessOptions\relax

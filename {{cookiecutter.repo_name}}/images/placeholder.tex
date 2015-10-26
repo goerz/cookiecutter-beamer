@@ -1,0 +1,55 @@
+\documentclass[12pt, compress]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+\usepackage{tikz}
+\usetikzlibrary{calc, mindmap}
+\usetikzlibrary{arrows,backgrounds,snakes,shapes}
+\usetikzlibrary{shapes.arrows}
+
+\input{colors.tex}
+
+\newcommand{\Op}[1]{\ensuremath{\boldsymbol{\mathsf{\hat{#1}}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Theme Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Berlin}
+\usecolortheme{seahorse}
+\useoutertheme{shadow}
+\useinnertheme{default}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\usefonttheme[onlysmall]{structurebold}
+\mode<presentation>{\beamertemplatenavigationsymbolsempty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% http://tex.stackexchange.com/questions/6135/how-to-make-beamer-overlays-with-tikz-node/6155#6155
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change the path
+}}
+
+% http://tex.stackexchange.com/questions/237272/croping-tikz-animation-out-of-a-beamer-presentation-producing-empty-pages
+\usepackage[psfixbb,graphics,tightpage,active]{preview}
+\PreviewEnvironment{tikzpicture}
+\let\myshipout\shipout
+\begin{document}
+\let\shipout\myshipout
+
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[x=1.0cm, y=1cm, baseline=(current bounding box.center)]
+
+\def\BoxWidth{11}
+\def\BoxHeight{8}
+
+\draw (0,0)          rectangle ({\BoxWidth}, {\BoxHeight});
+\draw (0,0)          --        ({\BoxWidth}, {\BoxHeight});
+\draw (0,\BoxHeight) --        ({\BoxWidth}, 0);
+
+
+\end{tikzpicture}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+\end{document}

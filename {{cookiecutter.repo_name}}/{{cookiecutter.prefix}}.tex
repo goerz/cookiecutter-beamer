@@ -1,0 +1,50 @@
+\documentclass[12pt, compress]{beamer}{% raw %}
+\usepackage[utf8]{inputenc}
+\usepackage{mymacros}
+
+\title{%{% endraw %}
+{{ cookiecutter.title }}%{% raw %}
+}
+
+\author{%{% endraw %}
+{{ cookiecutter.author_name }}
+\\~\\
+{{ cookiecutter.author_affiliation }}%{% raw %}
+}
+
+\date{%{% endraw %}
+{{ cookiecutter.location }}\\
+{{ cookiecutter.date }}%{% raw %}
+}
+
+\def\footerline{%{% endraw %}
+{{ cookiecutter.author_name }} ~ $\bullet$ ~ {{ cookiecutter.author_affiliation }} ~ $\bullet$ ~ {{ cookiecutter.short_title}}
+{% raw %}}
+\input{theme_settings.tex}
+
+\begin{document}
+
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Overview}
+\end{frame}
+
+
+\begin{frame}
+    \vfill \huge \center
+      Section title
+    \vfill
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{summary \& conclusion}
+  \begin{center}
+    \large Thank you!
+  \end{center}
+\end{frame}
+
+
+\end{document}{% endraw %}

@@ -1,0 +1,65 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Theme Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Berlin}
+\usecolortheme{seahorse}
+\useoutertheme{shadow}
+\useinnertheme{default}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{headline}{%
+  \hbox{%
+  %\begin{beamercolorbox}[wd=\paperwidth,ht=1ex,%
+                         %dp=2.5ex,left]{section in head/foot}%
+  \begin{beamercolorbox}[wd=\paperwidth,dp=1ex,left]{}%
+  \end{beamercolorbox}%
+  }
+}
+\setbeamertemplate{footline}{%
+  \hbox{%
+  \begin{beamercolorbox}[wd=1.0\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,%
+                         rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}%
+    \footerline \hfill%
+    \insertframenumber\,/\,\inserttotalframenumber
+  \end{beamercolorbox}%
+  }%
+}
+\usefonttheme[onlysmall]{structurebold}
+\setbeamertemplate{bibliography item}{%
+  \lower2pt\hbox{\pgfuseimage{beamericonarticle}%
+}\insertbiblabel}
+\mode<presentation>{\beamertemplatenavigationsymbolsempty}
+%\setbeamercolor{block title}{use=structure,fg=white,bg=red!75!black}
+%\setbeamercolor{block body}{use=structure,fg=black,bg=red!20!white}
+
+\input{images/colors.tex}
+
+\newcommand{\subhead}[1]{{\bf \color{DarkBlue} #1}}
+\newcommand{\mycircledTerm}[1]{\raisebox{-0.6ex}{\textcircled{\scriptsize #1}}}
+\newcommand{\mycircled}[1]{\textcircled{\scriptsize #1}}
+
+% Fix appendix numbering, See
+% http://tex.stackexchange.com/questions/2541/beamer-frame-numbering-in-appendix
+\newcommand{\backupbegin}{%
+   \newcounter{framenumberappendix}
+   \setcounter{framenumberappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{%
+   \addtocounter{framenumberappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumberappendix}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grid %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set up grid for absolute text positioning (page size = 12.8 x 9.6 cm)
+\usepackage[absolute, overlay]{textpos} % (add `showboxes` for debugging)
+\textblockorigin{0cm}{0cm} % The grid guides start from top left
+\setlength{\TPHorizModule}{1cm} % Units are 1 cm ...
+\setlength{\TPVertModule}{1cm} % ... and y coordinates point down
+% Now you can use e.g.:
+%    \begin{textblock}{3}(4,2)
+%      \dots
+%    \end{textblock}
+% to place a block 3cm wide, 4cm right and 2cm up from the bottom left corner
+
+%\setbeamertemplate{background}[grid][step=1cm] % show grid guides for debugging
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
