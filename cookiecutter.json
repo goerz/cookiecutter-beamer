@@ -6,11 +6,12 @@
     "year": "2015",
     "month": "1",
     "day": "1",
-    "date": "{% if cookiecutter.month|int == 1%}January{% elif cookiecutter.month|int == 2%}February{% elif cookiecutter.month|int == 3%}March{% elif cookiecutter.month|int == 4%}April{% elif cookiecutter.month|int == 5%}May{% elif cookiecutter.month|int == 6%}June{% elif cookiecutter.month|int == 7%}July{% elif cookiecutter.month|int == 8%}August{% elif cookiecutter.month|int == 9%}September{% elif cookiecutter.month|int == 10%}October{% elif cookiecutter.month|int == 11%}November{% elif cookiecutter.month|int == 12%}December{% else %}cookiecutter.month{% endif %} {{cookiecutter.day}}, {{cookiecutter.year}}",
+    "date": "{% if cookiecutter.month|int == 1%}January{% elif cookiecutter.month|int == 2%}February{% elif cookiecutter.month|int == 3%}March{% elif cookiecutter.month|int == 4%}April{% elif cookiecutter.month|int == 5%}May{% elif cookiecutter.month|int == 6%}June{% elif cookiecutter.month|int == 7%}July{% elif cookiecutter.month|int == 8%}August{% elif cookiecutter.month|int == 9%}September{% elif cookiecutter.month|int == 10%}October{% elif cookiecutter.month|int == 11%}November{% elif cookiecutter.month|int == 12%}December{% else %}{{cookiecutter.month}}{% endif %} {{cookiecutter.day}}, {{cookiecutter.year}}",
     "texfile_root": "slides",
     "title": "Title",
     "title_short": "{{cookiecutter.title}}",
     "title_word": "{{cookiecutter.title_short|replace(' ', '_')}}",
+    "subject": "",
     "_copy_without_render": [
         "theme_settings.tex",
         "*.sty",

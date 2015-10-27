@@ -1,31 +1,38 @@
-\documentclass[12pt, compress]{beamer}{% raw %}
+\documentclass[12pt, compress]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{mymacros}
+{% set lb = '{' %}{% set rb = '}' %}
+\title{{lb}}%
+{{ cookiecutter.title }}
+{{rb}}
 
-\title{%{% endraw %}
-{{ cookiecutter.title }}%{% raw %}
-}
-
-\author{%{% endraw %}
+\author{{lb}}%
 {{ cookiecutter.author_name }}
 \\~\\
-{{ cookiecutter.author_affiliation }}%{% raw %}
-}
+{{ cookiecutter.author_affiliation }}%
+{{rb}}
 
-\date{%{% endraw %}
+\hypersetup{{lb}}%
+  pdfauthor={{lb}}{{ cookiecutter.author_name }}{{rb}},
+  pdfsubject={{lb}}{{ cookiecutter.subject }}{{rb}},
+  pdfkeywords={{lb}}talk; slides{{rb}}
+{{rb}}
+
+\date{{lb}}%
 {{ cookiecutter.location }}\\
-{{ cookiecutter.date }}%{% raw %}
-}
+{{ cookiecutter.date }}%
+{{rb}}
 
-\def\footerline{%{% endraw %}
+\def\footerline{{lb}}
 {{ cookiecutter.author_name }} ~ $\bullet$ ~ {{ cookiecutter.author_affiliation }} ~ $\bullet$ ~ {{ cookiecutter.title_short}}
-{% raw %}}
+{{rb}}
 \input{theme_settings.tex}
-
+{% raw %}
 \begin{document}
 
 
 \frame{\titlepage}
+
 
 \begin{frame}
   \frametitle{Overview}
