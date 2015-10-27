@@ -1,19 +1,20 @@
 PDFLATEXOPTS = -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1
+TEXFILE_ROOT = {{cookiecutter.texfile_root}}
 
-all: {{ cookiecutter.prefix }}.pdf
+all: $(TEXFILE_ROOT).pdf
 
-{{ cookiecutter.prefix }}.pdf: {{ cookiecutter.prefix }}.tex $(wildcard images/*.py images/*.tex images/*.pdf images/*.png images/*.jpg)
+$(TEXFILE_ROOT).pdf: $(TEXFILE_ROOT).tex $(wildcard images/*.py images/*.tex images/*.pdf images/*.png images/*.jpg)
 	$(MAKE) -C images all
-	@latexmk -pdf -pdflatex="pdflatex $(PDFLATEXOPTS)" -silent {{ cookiecutter.prefix }}.tex
+	@latexmk -pdf -pdflatex="pdflatex $(PDFLATEXOPTS)" -silent $(TEXFILE_ROOT).tex
 
 pdflatex:
 	@echo "Compiling Main File ..."
-	pdflatex $(PDFLATEXOPTS) {{ cookiecutter.prefix }}
-	pdflatex $(PDFLATEXOPTS) {{ cookiecutter.prefix }}
+	pdflatex $(PDFLATEXOPTS) $(TEXFILE_ROOT)
+	pdflatex $(PDFLATEXOPTS) $(TEXFILE_ROOT)
 	@echo "Done"
 
 update:
-	pdflatex $(PDFLATEXOPTS) {{ cookiecutter.prefix }}
+	pdflatex $(PDFLATEXOPTS) $(TEXFILE_ROOT)
 
 clean:
 	@echo "Cleaning up files from LaTeX compilation ..."
@@ -36,6 +37,7 @@ clean:
 	@echo "Done"
 
 distclean: clean
-	@rm -f {{ cookiecutter.prefix }}.pdf
+	$(MAKE) -C images distclean
+	@rm -f $(TEXFILE_ROOT).pdf
 
 .PHONY: all pdflatex update clean distclean
